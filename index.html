@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Space Exoplanet</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- ── NAVBAR ───────────────────────────────────── -->
+  <nav>
+    <div class="brand">A WORLD AWAY</div>
+
+    <!-- desktop links -->
+    <div class="nav-links">
+      <a href="#">HOME</a>
+      <a href="predict.html">PREDICT</a>
+      <a href="#">MISSIONS</a>
+      <a href="#">CONTACT</a>
+    </div>
+
+    <!-- hamburger (shown on mobile) -->
+    <button class="hamburger-btn" aria-label="Toggle navigation">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- ── FLOATING BARS ─────────────────────────────── -->
+
+  <div class="floating-bar left-bar">
+    <p>
+      Our AI pipeline cleans Kepler and TESS light-curve data, extracts
+      periodicity features, and feeds them into a boosted ensemble for
+      exoplanet detection. Continuous learning sharpens precision while
+      crowdsourced labels keep the model honest.
+    </p>
+  </div>
+
+  <div class="floating-bar right-bar">
+    <p>
+      The right bar hosts mission context, team credits, and links to the
+      NASA Exoplanet Archive. Scroll to explore how our solution speeds up
+      candidate vetting and pushes discoveries from months to minutes.
+    </p>
+  </div>
+
+
+  <!-- ── CENTERED CARD + METRIC  ───────────────────── -->
+  <section class="centered-cards">
+
+    <!-- notice card -->
+    <div class="top-week-card">
+      <div class="card-header">
+        <div class="profile-pic"></div>
+
+        <div class="card-text">
+          <small>Top of the Week</small>
+          <p><strong>We have prepared two new locations for you.</strong></p>
+        </div>
+
+        <div class="up-arrow" title="Details">↑</div>
+      </div>
+    </div>
+
+    <!-- slide-out links for phones -->
+    <div class="mobile-menu">
+      <a href="#">HOME</a>
+      <a href="#">PREDICT</a>
+      <a href="#">MISSIONS</a>
+      <a href="#">CONTACT</a>
+    </div>
+
+    <!-- ── IMPORT BUTTON ────────────────────────────── -->
+    <button class="import-btn">
+      <svg class="import-icon" viewBox="0 0 24 24">
+        <path d="M5 20h14v-2H5v2zm7-18l-5 5h3v6h4v-6h3l-5-5z"></path>
+      </svg>
+      Import
+    </button>
+</body>
+</html>
