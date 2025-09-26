@@ -1,5 +1,7 @@
 /* ── JETBRAINS MONO + FUTURISTIC FLOATING BARS ───── */
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&display=swap');
+
 
 /* ─────────────────── GLOBAL RESET ─────────────────── */
 *,
@@ -263,18 +265,7 @@ nav {
   }
 }
 
-/* glass card */
-/* Predict page main title styling */
-.page-title {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 600;
-  font-size: 2.4rem;
-  color: #eee;
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-/* Layout and styling of predict main container */
+/* Predict page main container */
 .predict-main {
   max-width: 600px;
   margin: 80px auto 3rem;
@@ -284,27 +275,65 @@ nav {
   position: relative;
 }
 
-/* Buttons unified style: dark, minimal monochrome with subtle hover */
-/* Unified minimalist buttons: Select CSV, Upload, Predict */
+/* Glass card container style for form and results */
+.glass-card {
+  backdrop-filter: blur(14px) saturate(150%);
+  background: rgba(0, 0, 0, 0.528);
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 1rem;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 14px #0a0a0a50;
+  text-align: left;
+  color: #eee;
+}
+
+/* Page heading */
+.page-title {
+  font-family: jetbrains mono, monospace;
+  display: flex;
+  gap: 2rem;
+  font-weight: 400;
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  color: #eee;
+  backdrop-filter: blur(14px) saturate(150%);
+  background: rgba(0, 0, 0, 0.815);
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 1rem;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 14px #0a0a0a50;
+  text-align: left;
+  color: #eee;
+}
+
+/* Buttons style: monochrome dark with subtle white border */
 .pill-btn,
 .file-label span {
   background: #111;
   border: 2px solid #444;
   color: #fff;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1.18rem;
+  font-weight: 400;
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   font-weight: 600;
+  font-size: .7rem;
   padding: 0.7rem 2rem;
-  border-radius: 16px;
-  /* less rounded, matches screenshot */
   cursor: pointer;
+  transition: background 0.16s ease, color 0.16s ease, border-color 0.16s ease;
   box-shadow: none;
-  transition: background 0.16s, color 0.16s, border-color 0.16s;
   text-align: center;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
 }
 
-/* Inverse colors on hover */
+/* Hover: invert colors to white bg and black text */
 .pill-btn:hover,
 .file-label span:hover {
   background: #fff;
@@ -312,56 +341,36 @@ nav {
   border-color: #fff;
 }
 
-/* Predict button: bottom center, wider */
+
+/* Predict button fixed center bottom, wider */
 .predict-bottom-btn {
   position: fixed;
   left: 50%;
   bottom: 38px;
   transform: translateX(-50%);
   min-width: 320px;
+  padding: 0.8rem 5rem;
   text-align: center;
   z-index: 1001;
   box-shadow: none;
 }
 
-/* Ensures file input is hidden */
+/* File input hidden */
 .file-label input {
   display: none;
 }
 
-
-/* Predict button fixed at bottom center, wider and less rounded */
-.predict-bottom-btn {
-  position: fixed;
-  bottom: 38px;
-  left: 50%;
-  transform: translateX(-50%);
-  min-width: 320px;
-  padding: 0.8rem 5rem;
-  border-radius: 10%;
-  /* less rounded */
-  text-align: center;
-  z-index: 1001;
-  box-shadow: none;
-}
-
-/* Glass card style for form and results section */
-.glass-card {
-  backdrop-filter: blur(14px) saturate(150%);
-  background: rgba(0, 0, 0, 0.195);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1rem;
-  padding: 1.2rem 1.5rem;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 4px 14px #00000050;
-  text-align: left;
-  color: #eee;
-}
-
-/* Result container styling */
+/* Output container styling */
 .results-container h2 {
-  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 400;
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  font-size: .7rem;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .results-container pre {
@@ -372,57 +381,4 @@ nav {
   background: #121212;
   border-radius: 0.75rem;
   box-shadow: inset 0 0 8px #222;
-}
-
-/* file input */
-.file-label {
-  position: relative;
-  cursor: pointer;
-}
-
-.file-label span {
-  display: inline-block;
-  padding: .7rem 1.5rem;
-  background: #111;
-  border: 1px solid #444;
-  border-radius: .6rem;
-}
-
-.file-label input {
-  display: none;
-}
-
-/* orbit-loader */
-.loader {
-  width: 24px;
-  height: 24px;
-  stroke: #fff;
-  stroke-width: 2;
-  fill: none;
-  animation: spin 1.2s linear infinite;
-  opacity: 0;
-  transition: .2s;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* show loader while reading */
-.loading .loader {
-  opacity: 1;
-}
-
-.loading .btn-text {
-  opacity: .4;
-}
-
-/* floating Predict button bottom-right */
-.predict-bottom-btn {
-  position: fixed;
-  right: center;
-  bottom: center;
-  z-index: 1001;
 }
