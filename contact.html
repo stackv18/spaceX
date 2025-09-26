@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Contact · A World Away</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav>
+  <div class="brand">A WORLD AWAY</div>
+  <div class="nav-links">
+    <a href="index.html">HOME</a>
+    <a href="predict.html">PREDICT</a>
+    <a href="mission.html">MISSION</a>
+    <a href="contact.html">CONTACT</a>
+  </div>
+</nav>
+
+<main class="contact-main">
+
+  <h1>Get in Touch</h1>
+
+  <form id="contactForm" class="glass-card">
+    <label>
+      Name
+      <input type="text" name="name" placeholder="Your full name" required />
+    </label>
+
+    <label>
+      Email
+      <input type="email" name="email" placeholder="your.email@example.com" required />
+    </label>
+
+    <label>
+      Message
+      <textarea name="message" rows="5" placeholder="What’s on your mind?" required></textarea>
+    </label>
+
+    <button type="submit" class="pill-btn">Send Message</button>
+  </form>
+
+</main>
+
+<script>
+  document.getElementById('contactForm').onsubmit = e => {
+    e.preventDefault();
+    alert('Thank you for reaching out! We will respond shortly.');
+  };
+</script>
+
+</body>
+</html>
