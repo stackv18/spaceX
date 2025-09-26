@@ -1,169 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Predict · A World Away</title>
-  <!-- existing site-wide stylesheet -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
 
-  <!-- fixed navbar (unchanged) -->
-  <nav>
-    <div class="brand">A WORLD AWAY</div>
+<nav>
+  <div class="brand">A WORLD AWAY</div>
+  <div class="nav-links">
+    <a href="index.html">HOME</a>
+    <a href="predict.html">PREDICT</a>
+    <a href="#">CONTACT</a>
+  </div>
+</nav>
 
-    <div class="nav-links">
-      <a href="index.html">HOME</a>
-      <a href="#">PREDICT</a>
-      <a href="#">MISSIONS</a>
-      <a href="#">CONTACT</a>
-    </div>
+<main class="predict-main">
+  <h1 class="page-title">Upload CSV &amp; Predict</h1>
 
-  </nav>
+  <form id="csvForm" class="glass-card">
+    <label class="file-label">
+      <input type="file" id="fileInput" accept=".csv" />
+      <span>Select CSV</span>
+    </label>
 
-  <main class="predict-main">
-    <h1 class="page-title">Upload CSV &amp; Predict</h1>
+    <button type="button" id="uploadBtn" class="pill-btn upload-btn">Upload</button>
+  </form>
 
-    <!-- glass card: upload -->
-    <form id="csvForm" class="glass-card">
-      <label class="file-label">
-        <input type="file" id="fileInput" accept=".csv">
-        <span>Select CSV</span>
-      </label>
+  <section id="outputSection" class="glass-card results-container" style="display:none">
+    <h2>Prediction Results</h2>
+    <pre id="results"></pre>
+  </section>
 
-      <button type="button" id="uploadBtn" class="pill-btn">Upload</button>
-    </form>
+  <button id="predictBtn" class="pill-btn predict-bottom-btn">Predict</button>
+</main>
 
-    <!-- glass card: results (starts hidden) -->
-    <section id="outputSection" class="glass-card results-container" style="display:none">
-      <h2>Prediction Results</h2>
-      <pre id="results"></pre>
-    </section>
+<script>
+  const uploadBtn = document.getElementById('uploadBtn');
+  const predictBtn = document.getElementById('predictBtn');
 
-    <!-- floating “Predict” button -->
-    <button id="predictBtn" class="pill-btn predict-bottom-btn">Predict</button>
-  </main>
-
-
-  <!-- lightweight client-side stub -->
-  <script>
-    document.getElementById('uploadBtn').onclick = () => {
-      const file = document.getElementById('fileInput').files[0];
-      if (!file) { alert('Please select a CSV file first.'); return; }
-
-      const reader = new FileReader();
-      reader.onload = e => {
-        /* stub: simply preview content.
-           replace with real model call or fetch to backend. */
-        document.getElementById('results').textContent = e.target.result;
-        document.getElementById('outputSection').style.display = 'block';
-      };
-      reader.readAsText(file);
+  uploadBtn.onclick = () => {
+    const file = document.getElementById('fileInput').files[0];
+    if(!file) {
+      alert('Please select a CSV file first.');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = e => {
+      document.getElementById('results').textContent = e.target.result;
+      document.getElementById('outputSection').style.display = 'block';
     };
-  </script>
+    reader.readAsText(file);
+  };
 
-  <script>
-    const uploadBtn = document.getElementById('uploadBtn');
-    const predictBtn = document.getElementById('predictBtn');
-
-    uploadBtn.onclick = () => {
-      const file = document.getElementById('fileInput').files[0];
-      if (!file) { alert('Please select a CSV file first.'); return; }
-
-      const reader = new FileReader();
-      reader.onload = e => {
-        document.getElementById('results').textContent = e.target.result;
-        document.getElementById('outputSection').style.display = 'block';
-      };
-      reader.readAsText(file);
-    };
-
-    predictBtn.onclick = () => {
-      /* later you’ll replace this with real inference UX.
-         For now it simply toggles the results card. */
-      const out = document.getElementById('outputSection');
-      out.style.display = (out.style.display === 'block') ? 'none' : 'block';
-    };
-  </script>
-
-
-  <!-- page-specific styling -->
-  <style>
-    main.predict-main {
-      max-width: 600px;
-      margin: 80px auto 2rem;
-      padding: 1.5rem;
-      background: rgba(0, 0, 0, 0.44);
-      border-radius: 1rem;
-      box-shadow: 0 0 15px #222;
-      color: #eee;
-      text-align: center;
-    }
-
-    form {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 1rem;
-    }
-
-    input[type=file] {
-      flex: 1 1 250px;
-      background: #111;
-      border: 1px solid #444;
-      color: #eee;
-      padding: .6rem;
-      border-radius: .6rem;
-    }
-
-    #uploadBtn {
-      background: linear-gradient(45deg, #313131, #010101);
-      border: none;
-      border-radius: 30%;
-      padding: .6rem 1.2rem;
-      color: #fff;
-      cursor: pointer;
-      transition: .3s;
-    }
-
-    #uploadBtn:hover {
-      box-shadow: 0 6px 12px #000000;
-      transform: translateY(-2px);
-    }
-
-    #outputSection {
-      display: none;
-      background: #121212;
-      padding: 1rem;
-      border-radius: .75rem;
-      box-shadow: inset 0 0 8px #222;
-      white-space: pre-wrap;
-      max-height: 300px;
-      overflow: auto;
-    }
-  </style>
-  <script>
-    const btn = document.getElementById('uploadBtn');
-    const fileI = document.getElementById('fileInput');
-    btn.onclick = () => {
-      const f = fileI.files[0];
-      if (!f) { alert('Select a CSV first'); return; }
-      btn.classList.add('loading');
-
-      const r = new FileReader();
-      r.onload = e => {
-        document.getElementById('results').textContent = e.target.result;
-        document.getElementById('outputSection').style.display = 'block';
-        btn.classList.remove('loading');
-      };
-      r.readAsText(f);
-    };
-  </script>
+  predictBtn.onclick = () => {
+    const outputSection = document.getElementById('outputSection');
+    outputSection.style.display = (outputSection.style.display === 'block') ? 'none' : 'block';
+  };
+</script>
 
 </body>
-
 </html>
