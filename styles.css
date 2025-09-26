@@ -19,7 +19,7 @@ body {
   position: relative;
   padding-bottom: 80px;
   /* space for import button */
-  background: url('img.gif') no-repeat center center fixed;
+  background: url('img.jpg') no-repeat center center fixed;
   background-size: cover;
 }
 
