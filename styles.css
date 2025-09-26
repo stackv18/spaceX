@@ -284,35 +284,66 @@ nav {
   position: relative;
 }
 
-.pill-btn {
+/* Buttons unified style: dark, minimal monochrome with subtle hover */
+/* Unified minimalist buttons: Select CSV, Upload, Predict */
+.pill-btn,
+.file-label span {
   background: #111;
   border: 2px solid #444;
   color: #fff;
   font-family: 'JetBrains Mono', monospace;
   font-size: 1.18rem;
   font-weight: 600;
+  padding: 0.7rem 2rem;
+  border-radius: 16px;
+  /* less rounded, matches screenshot */
   cursor: pointer;
-  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+  box-shadow: none;
+  transition: background 0.16s, color 0.16s, border-color 0.16s;
+  text-align: center;
+  letter-spacing: .5px;
+}
+
+/* Inverse colors on hover */
+.pill-btn:hover,
+.file-label span:hover {
+  background: #fff;
+  color: #111;
+  border-color: #fff;
+}
+
+/* Predict button: bottom center, wider */
+.predict-bottom-btn {
+  position: fixed;
+  left: 50%;
+  bottom: 38px;
+  transform: translateX(-50%);
+  min-width: 320px;
+  text-align: center;
+  z-index: 1001;
   box-shadow: none;
 }
 
-.pill-btn:hover {
-  background: #222;
-  border-color: #fff;
-  color: #fff;
+/* Ensures file input is hidden */
+.file-label input {
+  display: none;
 }
 
-/* Bottom center predict button - wider and less rounded */
+
+/* Predict button fixed at bottom center, wider and less rounded */
 .predict-bottom-btn {
   position: fixed;
   bottom: 38px;
   left: 50%;
   transform: translateX(-50%);
   min-width: 320px;
+  padding: 0.8rem 5rem;
+  border-radius: 10%;
+  /* less rounded */
   text-align: center;
   z-index: 1001;
+  box-shadow: none;
 }
-
 
 /* Glass card style for form and results section */
 .glass-card {
