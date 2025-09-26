@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -7,11 +8,12 @@
   <!-- existing site-wide stylesheet -->
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-<!-- fixed navbar (unchanged) -->
-<nav>
-  <div class="brand">A WORLD AWAY</div>
+  <!-- fixed navbar (unchanged) -->
+  <nav>
+    <div class="brand">A WORLD AWAY</div>
 
     <div class="nav-links">
       <a href="index.html">HOME</a>
@@ -20,69 +22,150 @@
       <a href="#">CONTACT</a>
     </div>
 
-</nav>
+  </nav>
 
-<main class="predict-main">
-  <h1>Upload CSV &amp; Predict</h1>
+  <main class="predict-main">
+    <h1 class="page-title">Upload CSV &amp; Predict</h1>
 
-  <!-- upload UI -->
-  <form id="csvForm">
-    <input type="file" id="fileInput" accept=".csv">
-    <button type="button" id="uploadBtn">Upload &amp; Predict</button>
-  </form>
+    <!-- glass card: upload -->
+    <form id="csvForm" class="glass-card">
+      <label class="file-label">
+        <input type="file" id="fileInput" accept=".csv">
+        <span>Select CSV</span>
+      </label>
 
-  <!-- hidden until a file is read -->
-  <section id="outputSection">
-    <h2>Prediction Results</h2>
-    <pre id="results"></pre>
-  </section>
-</main>
+      <button type="button" id="uploadBtn" class="pill-btn">Upload</button>
+    </form>
 
-<!-- lightweight client-side stub -->
-<script>
-  document.getElementById('uploadBtn').onclick = () => {
+    <!-- glass card: results (starts hidden) -->
+    <section id="outputSection" class="glass-card results-container" style="display:none">
+      <h2>Prediction Results</h2>
+      <pre id="results"></pre>
+    </section>
+
+    <!-- floating “Predict” button -->
+    <button id="predictBtn" class="pill-btn predict-bottom-btn">Predict</button>
+  </main>
+
+
+  <!-- lightweight client-side stub -->
+  <script>
+    document.getElementById('uploadBtn').onclick = () => {
       const file = document.getElementById('fileInput').files[0];
-      if(!file){ alert('Please select a CSV file first.'); return; }
+      if (!file) { alert('Please select a CSV file first.'); return; }
 
       const reader = new FileReader();
       reader.onload = e => {
-          /* stub: simply preview content.
-             replace with real model call or fetch to backend. */
-          document.getElementById('results').textContent = e.target.result;
-          document.getElementById('outputSection').style.display = 'block';
+        /* stub: simply preview content.
+           replace with real model call or fetch to backend. */
+        document.getElementById('results').textContent = e.target.result;
+        document.getElementById('outputSection').style.display = 'block';
       };
       reader.readAsText(file);
-  };
-</script>
+    };
+  </script>
 
-<!-- page-specific styling -->
-<style>
-  main.predict-main{
-    max-width:600px;
-    margin:80px auto 2rem;
-    padding:1.5rem;
-    background:rgba(20,20,30,.85);
-    border-radius:1rem;
-    box-shadow:0 0 15px #222;
-    color:#eee;
-    text-align:center;
-  }
-  form{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-bottom:1rem;}
-  input[type=file]{
-    flex:1 1 250px;background:#111;border:1px solid #444;
-    color:#eee;padding:.6rem;border-radius:.6rem;
-  }
-  #uploadBtn{
-    background:linear-gradient(45deg,#313131,#010101);
-    border:none;border-radius:1rem;
-    padding:.6rem 1.2rem;font-weight:600;color:#fff;cursor:pointer;
-    box-shadow:0 4px 8px #ffffff;transition:.3s;
-  }
-  #uploadBtn:hover{box-shadow:0 6px 12px #000000;transform:translateY(-2px);}
-  #outputSection{
-    display:none;background:#121212;padding:1rem;border-radius:.75rem;
-    box-shadow:inset 0 0 8px #222;white-space:pre-wrap;max-height:300px;overflow:auto;
-  }
-</style>
+  <script>
+    const uploadBtn = document.getElementById('uploadBtn');
+    const predictBtn = document.getElementById('predictBtn');
+
+    uploadBtn.onclick = () => {
+      const file = document.getElementById('fileInput').files[0];
+      if (!file) { alert('Please select a CSV file first.'); return; }
+
+      const reader = new FileReader();
+      reader.onload = e => {
+        document.getElementById('results').textContent = e.target.result;
+        document.getElementById('outputSection').style.display = 'block';
+      };
+      reader.readAsText(file);
+    };
+
+    predictBtn.onclick = () => {
+      /* later you’ll replace this with real inference UX.
+         For now it simply toggles the results card. */
+      const out = document.getElementById('outputSection');
+      out.style.display = (out.style.display === 'block') ? 'none' : 'block';
+    };
+  </script>
+
+
+  <!-- page-specific styling -->
+  <style>
+    main.predict-main {
+      max-width: 600px;
+      margin: 80px auto 2rem;
+      padding: 1.5rem;
+      background: rgba(0, 0, 0, 0.44);
+      border-radius: 1rem;
+      box-shadow: 0 0 15px #222;
+      color: #eee;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    input[type=file] {
+      flex: 1 1 250px;
+      background: #111;
+      border: 1px solid #444;
+      color: #eee;
+      padding: .6rem;
+      border-radius: .6rem;
+    }
+
+    #uploadBtn {
+      background: linear-gradient(45deg, #313131, #010101);
+      border: none;
+      border-radius: 1rem;
+      padding: .6rem 1.2rem;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 4px 8px #ffffff;
+      transition: .3s;
+    }
+
+    #uploadBtn:hover {
+      box-shadow: 0 6px 12px #000000;
+      transform: translateY(-2px);
+    }
+
+    #outputSection {
+      display: none;
+      background: #121212;
+      padding: 1rem;
+      border-radius: .75rem;
+      box-shadow: inset 0 0 8px #222;
+      white-space: pre-wrap;
+      max-height: 300px;
+      overflow: auto;
+    }
+  </style>
+  <script>
+    const btn = document.getElementById('uploadBtn');
+    const fileI = document.getElementById('fileInput');
+    btn.onclick = () => {
+      const f = fileI.files[0];
+      if (!f) { alert('Select a CSV first'); return; }
+      btn.classList.add('loading');
+
+      const r = new FileReader();
+      r.onload = e => {
+        document.getElementById('results').textContent = e.target.result;
+        document.getElementById('outputSection').style.display = 'block';
+        btn.classList.remove('loading');
+      };
+      r.readAsText(f);
+    };
+  </script>
+
 </body>
+
 </html>
