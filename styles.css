@@ -396,6 +396,12 @@ nav {
   margin-bottom: 2rem;
   color: #bbb;
   font-size: 0.9rem;
+  backdrop-filter: blur(14px) saturate(150%);
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 4px 14px #0a0a0a80;
 }
 
 .contact-form {
@@ -458,7 +464,53 @@ nav {
     grid-template-columns: 1fr;
     padding: 1.5rem;
   }
+
   .contact-form label.full {
     grid-column: span 1;
   }
 }
+
+/* ------- CONTACT WRAPPER ------- */
+.contact-wrapper {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 240px 1fr;
+  align-items: start;
+  margin-top: 2rem;
+  /* below the page title */
+}
+
+/* Sample info box */
+.contact-sample-info {
+  backdrop-filter: blur(14px) saturate(150%);
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  padding: 1.5rem 2rem;
+  text-align: left;
+  color: #eee;
+  font-size: 0.8rem;
+}
+
+.contact-sample-info h3 {
+  margin-bottom: 0.7rem;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.contact-sample-info a {
+  color: #ff6f00;
+  text-decoration: none;
+}
+
+.contact-sample-info a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile: stack vertically */
+@media (max-width: 640px) {
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
