@@ -3,52 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Contact · A World Away</title>
+  <title>Contact Us | A World Away</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
+  <!-- NAVBAR reused -->
+  <nav>
+    <div class="brand">A WORLD AWAY</div>
+    <div class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="predict.html">PREDICT</a>
+      <a href="mission.html">MISSIONS</a>
+      <a href="contact.html" class="active">CONTACT</a>
+    </div>
+    <button class="hamburger-btn" aria-label="Toggle navigation"></button>
+  </nav>
 
-<nav>
-  <div class="brand">A WORLD AWAY</div>
-  <div class="nav-links">
-    <a href="index.html">HOME</a>
-    <a href="predict.html">PREDICT</a>
-    <a href="mission.html">MISSION</a>
-    <a href="contact.html">CONTACT</a>
-  </div>
-</nav>
+  <!-- MAIN -->
+  <main class="contact-main">
+    <h1 class="page-title">Get in Touch</h1>
 
-<main class="contact-main">
+    <p class="contact-tagline">
+      Whether you spotted a potential exoplanet or just want to say hi, drop us a message 🚀
+    </p>
 
-  <h1>Get in Touch</h1>
+    <form class="contact-form" action="#" method="post">
+      <label>
+        <span>Name</span>
+        <input type="text" name="name" required />
+      </label>
 
-  <form id="contactForm" class="glass-card">
-    <label>
-      Name
-      <input type="text" name="name" placeholder="Your full name" required />
-    </label>
+      <label>
+        <span>Email</span>
+        <input type="email" name="email" required />
+      </label>
 
-    <label>
-      Email
-      <input type="email" name="email" placeholder="your.email@example.com" required />
-    </label>
+      <label>
+        <span>Subject</span>
+        <input type="text" name="subject" />
+      </label>
 
-    <label>
-      Message
-      <textarea name="message" rows="5" placeholder="What’s on your mind?" required></textarea>
-    </label>
+      <label class="full">
+        <span>Message</span>
+        <textarea name="message" rows="6" required></textarea>
+      </label>
 
-    <button type="submit" class="pill-btn">Send Message</button>
-  </form>
-
-</main>
-
-<script>
-  document.getElementById('contactForm').onsubmit = e => {
-    e.preventDefault();
-    alert('Thank you for reaching out! We will respond shortly.');
-  };
-</script>
+      <button type="submit" class="pill-btn">SEND MESSAGE</button>
+    </form>
+  </main>
 
 </body>
 </html>
