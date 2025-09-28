@@ -1,3 +1,45 @@
+/* Glass dropdown for model selection */
+.model-dropdown-container {
+  position: absolute;
+  top: 60px; /* just below navbar */
+  right: 40px;
+  z-index: 1100;
+}
+
+.glass-dropdown {
+  backdrop-filter: blur(14px) saturate(150%);
+  background: rgba(0, 0, 0, 0.914);
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 1rem;
+  color: #eee;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  padding: 0.7rem 2.5rem 0.7rem 1.2rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 14px #0a0a0a50;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  min-width: 170px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.glass-dropdown:focus {
+  border-color: #ff6f00;
+  box-shadow: 0 0 0 2px #ff6f0033;
+}
+
+@media (max-width: 700px) {
+  .model-dropdown-container {
+    right: 10px;
+    top: 55px;
+  }
+  .glass-dropdown {
+    font-size: 0.95rem;
+    min-width: 120px;
+    padding: 0.6rem 1.2rem 0.6rem 0.8rem;
+  }
+}
 /* ── JETBRAINS MONO + FUTURISTIC FLOATING BARS ───── */
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&display=swap');
