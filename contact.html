@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Contact Us | A World Away</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- NAVBAR reused -->
+  <nav>
+    <div class="brand">A WORLD AWAY</div>
+    <div class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="predict.html">PREDICT</a>
+      <a href="mission.html">MISSIONS</a>
+      <a href="contact.html" class="active">CONTACT</a>
+    </div>
+    <button class="hamburger-btn" aria-label="Toggle navigation"></button>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="contact-main">
+    <h1 class="page-title">Get in Touch</h1>
+
+    <p class="contact-tagline">
+      Whether you spotted a potential exoplanet or just want to say hi, drop us a message 🚀
+    </p>
+
+    <!---- Contact info & form wrapper -->
+    <section class="contact-wrapper">
+      <!-- Visible sample info -->
+      <div class="contact-sample-info glass-card">
+        <h3>Say Hello</h3>
+        <p>Email: <a href="mailto:contact@aworldaway.space">contact@aworldaway.space</a></p>
+        <p>Phone: +1 (234) 567-8901</p>
+      </div>
+
+      <!-- Form -->
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('Successfully sent'); this.reset();">
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" required />
+        </label>
+
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" required />
+        </label>
+
+        <label>
+          <span>Subject</span>
+          <input type="text" name="subject" />
+        </label>
+
+        <label class="full">
+          <span>Message</span>
+          <textarea name="message" rows="6" required></textarea>
+        </label>
+
+        <button type="submit" class="pill-btn">SEND MESSAGE</button>
+        <script>
+          event.preventDefault();      // stops page navigation
+          alert('Successfully sent');  // shows the pop-up
+          this.reset();                // clears the form
+        </script>
+      </form>
+    </section>
+
+  </main>
+
+</body>
+
+</html>

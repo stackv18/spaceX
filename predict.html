@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Predict · A World Away</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav>
+  <div class="brand">A WORLD AWAY</div>
+  <div class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="#">PREDICT</a>
+      <a href="mission.html">MISSIONS</a>
+      <a href="contact.html">CONTACT</a>
+    </div>
+</nav>
+
+<!-- Dropdown menu for model selection -->
+<div class="model-dropdown-container">
+  <select class="glass-dropdown" id="modelSelect">
+    <option value="" disabled selected>Select Model</option>
+    <option value="model1">Model 1</option>
+    <option value="model2">Model 2</option>
+    <option value="model3">Model 3</option>
+    <option value="model4">Model 4</option>
+    <option value="model5">Model 5</option>
+    <option value="model6">Model 6</option>
+  </select>
+</div>
+
+<main class="predict-main">
+  <h1 class="page-title">Upload CSV &amp; Predict</h1>
+
+  <form id="csvForm" class="glass-card">
+    <label class="file-label">
+      <input type="file" id="fileInput" accept=".csv" />
+      <span>Select CSV</span>
+    </label>
+
+    <button type="button" id="uploadBtn" class="pill-btn upload-btn">Upload</button>
+  </form>
+
+  <section id="outputSection" class="glass-card results-container" style="display:none">
+    <h2>Uploaded CSV</h2>
+    <pre id="results"></pre>
+  </section>
+
+  <button id="predictBtn" class="pill-btn predict-bottom-btn">Predict</button>
+</main>
+
+<script>
+  const uploadBtn = document.getElementById('uploadBtn');
+  const predictBtn = document.getElementById('predictBtn');
+
+  uploadBtn.onclick = () => {
+    const file = document.getElementById('fileInput').files[0];
+    if(!file) {
+      alert('Please select a CSV file first.');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = e => {
+      document.getElementById('results').textContent = e.target.result;
+      document.getElementById('outputSection').style.display = 'block';
+    };
+    reader.readAsText(file);
+  };
+
+  predictBtn.onclick = () => {
+    const outputSection = document.getElementById('outputSection');
+    outputSection.style.display = (outputSection.style.display === 'block') ? 'none' : 'block';
+  };
+</script>
+
+</body>
+</html>
